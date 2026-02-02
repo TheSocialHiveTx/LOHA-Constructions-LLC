@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Loha Construction LLC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#a81c1c',
+                        secondary: '#d4af37',
+                        dark: '#121212',
+                        accent: '#800000'
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-zinc-50 text-zinc-900 overflow-x-hidden">
+
+    <!-- Navbar (Same as About Us) -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 group">
+                <div class="flex flex-col">
+                    <span id="nav-logo-text"
+                        class="text-2xl font-bold tracking-tighter transition-colors text-white">LOHA</span>
+                    <span id="nav-logo-sub"
+                        class="text-[10px] tracking-[0.2em] font-bold transition-colors text-zinc-200">CONSTRUCTION
+                        LLC</span>
+                </div>
+            </a>
+            <div class="hidden lg:flex space-x-7 items-center">
+                <a href="index.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">Home</a>
+                <a href="about-us.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">About</a>
+                <div class="relative group" id="services-dropdown-container">
+                    <button id="services-btn"
+                        class="nav-link flex items-center font-semibold hover:text-primary transition-colors focus:outline-none text-white">
+                        Services
+                        <i class="fas fa-chevron-down ml-1.5 text-[10px] transition-transform duration-200"></i>
+                    </button>
+                    <div
+                        class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl py-3 border border-zinc-100 transition-all duration-200 transform opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto">
+                        <a href="services/kitchen-remodeling.html"
+                            class="block px-6 py-2.5 text-sm font-semibold hover:bg-zinc-50 hover:text-primary transition-colors text-zinc-700">Kitchen
+                            Remodeling</a>
+                        <a href="services/bathroom-remodeling.html"
+                            class="block px-6 py-2.5 text-sm font-semibold hover:bg-zinc-50 hover:text-primary transition-colors text-zinc-700">Bathroom
+                            Remodeling</a>
+                    </div>
+                </div>
+                <a href="project-gallery.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">Projects</a>
+                <a href="testimonials.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">Testimonials</a>
+                <a href="faq.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">FAQ</a>
+                <a href="contact-us.html"
+                    class="bg-primary hover:bg-accent text-white px-6 py-2.5 rounded-full font-bold transition-all transform hover:scale-105 shadow-md">Get
+                    a Quote</a>
+            </div>
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl p-2 focus:outline-none text-white">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div id="mobile-menu"
+            class="lg:hidden bg-white overflow-hidden transition-all duration-300 ease-in-out border-b border-zinc-100 max-h-0 opacity-0">
+            <div class="container mx-auto px-6 py-6 flex flex-col space-y-4">
+                <a href="index.html" class="font-bold text-xl text-zinc-800">Home</a>
+                <a href="about-us.html" class="font-bold text-xl text-zinc-800">About</a>
+                <div class="flex flex-col space-y-3">
+                    <span class="text-zinc-400 text-xs font-bold uppercase tracking-widest px-1">Services</span>
+                    <a href="services/kitchen-remodeling.html"
+                        class="font-bold pl-4 text-lg border-l-2 text-zinc-800 border-transparent">Kitchen
+                        Remodeling</a>
+                    <a href="services/bathroom-remodeling.html"
+                        class="font-bold pl-4 text-lg border-l-2 text-zinc-800 border-transparent">Bathroom
+                        Remodeling</a>
+                </div>
+                <a href="project-gallery.html" class="font-bold text-xl text-zinc-800">Projects</a>
+                <a href="testimonials.html" class="font-bold text-xl text-zinc-800">Testimonials</a>
+                <a href="faq.html" class="font-bold text-xl text-zinc-800">FAQ</a>
+                <a href="contact-us.html"
+                    class="bg-primary text-white p-4 text-center rounded-xl font-bold text-lg shadow-lg active:scale-95 transition-transform">Get
+                    a Quote</a>
+            </div>
+        </div>
+    </nav>
+    <div id="header-overlay"
+        class="fixed top-0 left-0 w-full h-32 bg-gradient-to-b from-black/60 to-transparent z-[45] pointer-events-none transition-opacity duration-300">
+    </div>
+
+    <div class="pt-20 bg-zinc-50">
+        <section class="py-12 lg:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-serif font-bold mb-4">Contact Our Experts</h1>
+                    <p class="text-zinc-600 max-w-xl mx-auto">Ready to remodel? Reach out today for a consultation to
+                        discuss your vision and get an expert project estimate.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-12">
+                    <!-- Contact Details -->
+                    <div class="lg:col-span-1 space-y-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border-l-4 border-primary">
+                            <h3 class="text-xl font-bold mb-6">Our Contact Info</h3>
+                            <ul class="space-y-6">
+                                <li class="flex items-start">
+                                    <div
+                                        class="w-10 h-10 bg-zinc-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                        <i class="fas fa-phone text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs uppercase font-bold text-zinc-400">Phone</p>
+                                        <p class="text-lg font-semibold">(713) 385-7231</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div
+                                        class="w-10 h-10 bg-zinc-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                        <i class="fas fa-envelope text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs uppercase font-bold text-zinc-400">Email</p>
+                                        <p class="text-lg font-semibold break-all">lohaco@outlook.com</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div
+                                        class="w-10 h-10 bg-zinc-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                                        <i class="fas fa-map-marker-alt text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs uppercase font-bold text-zinc-400">Location</p>
+                                        <p class="text-lg font-semibold">Houston, TX</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-primary/5 p-8 rounded-2xl border border-primary/10">
+                            <h4 class="font-bold text-primary mb-4 uppercase tracking-widest text-sm text-center">
+                                Serving Greater Houston</h4>
+                            <p class="text-zinc-600 text-sm leading-relaxed text-center">
+                                We specialize in high-end transformations across Houston, Katy, Sugar Land, The
+                                Woodlands, and surrounding metropolitan areas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white p-10 rounded-2xl shadow-xl">
+                            <div id="success-message" class="hidden text-center py-12">
+                                <div
+                                    class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <h2 class="text-3xl font-serif font-bold mb-4">Message Received!</h2>
+                                <p class="text-zinc-600 mb-8">Thank you for reaching out to Loha Construction LLC. One
+                                    of our project managers will contact you within 24 hours.</p>
+                                <button id="send-another-btn" class="text-primary font-bold hover:underline">Send
+                                    another message</button>
+                            </div>
+
+                            <form id="contact-form" class="space-y-6">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-bold text-zinc-700 mb-2">Your Name</label>
+                                        <input type="text" required
+                                            class="w-full bg-zinc-50 border border-zinc-200 rounded-lg p-3 outline-none focus:border-primary transition-colors"
+                                            name="name">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-bold text-zinc-700 mb-2">Email Address</label>
+                                        <input type="email" required
+                                            class="w-full bg-zinc-50 border border-zinc-200 rounded-lg p-3 outline-none focus:border-primary transition-colors"
+                                            name="email">
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-bold text-zinc-700 mb-2">Phone Number</label>
+                                        <input type="tel" required
+                                            class="w-full bg-zinc-50 border border-zinc-200 rounded-lg p-3 outline-none focus:border-primary transition-colors"
+                                            name="phone">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-bold text-zinc-700 mb-2">Project
+                                            Interest</label>
+                                        <select
+                                            class="w-full bg-zinc-50 border border-zinc-200 rounded-lg p-3 outline-none focus:border-primary transition-colors"
+                                            name="service">
+                                            <option>Kitchen Remodel</option>
+                                            <option>Bathroom Remodel</option>
+                                            <option>Full Home Renovation</option>
+                                            <option>Other Construction</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <label class="text-sm font-bold text-zinc-700">Project Details</label>
+                                    </div>
+                                    <textarea rows="4" required placeholder="Tell us about your project..."
+                                        class="w-full bg-zinc-50 border border-zinc-200 rounded-lg p-3 outline-none focus:border-primary transition-colors"
+                                        name="message"></textarea>
+                                </div>
+
+                                <button type="submit" id="submit-btn"
+                                    class="w-full bg-primary text-white font-bold py-4 rounded-lg hover:bg-red-800 transition-all shadow-lg flex items-center justify-center">
+                                    <span id="btn-text">Send Message <i class="fas fa-paper-plane ml-2"></i></span>
+                                    <i id="btn-spinner" class="fas fa-spinner fa-spin text-2xl hidden"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer (Same as About Us) -->
+    <footer class="bg-zinc-900 text-zinc-300 pt-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1">
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold text-white tracking-tighter">LOHA</span>
+                        <p class="text-xs text-secondary font-bold tracking-widest mt-1 uppercase">CONSTRUCTION LLC</p>
+                    </div>
+                    <p class="text-zinc-400 mb-6 italic">Building dreams, one home at a time in Houston, TX.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-zinc-800 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-colors"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-zinc-800 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-colors"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-zinc-800 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-colors"><i
+                                class="fab fa-houzz"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-lg uppercase tracking-wider">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="services/kitchen-remodeling.html"
+                                class="hover:text-secondary transition-colors">Kitchen Remodeling</a></li>
+                        <li><a href="services/bathroom-remodeling.html"
+                                class="hover:text-secondary transition-colors">Bathroom Remodeling</a></li>
+                        <li><a href="project-gallery.html" class="hover:text-secondary transition-colors">Project
+                                Gallery</a></li>
+                        <li><a href="contact-us.html" class="hover:text-secondary transition-colors">Custom Projects</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-lg uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about-us.html" class="hover:text-secondary transition-colors">About Us</a></li>
+                        <li><a href="testimonials.html" class="hover:text-secondary transition-colors">Testimonials</a>
+                        </li>
+                        <li><a href="faq.html" class="hover:text-secondary transition-colors">FAQ</a></li>
+                        <li><a href="areas-served.html" class="hover:text-secondary transition-colors">Areas Served</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-lg uppercase tracking-wider">Contact Info</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 text-primary mr-3"></i>
+                            <a href="tel:(713) 385-7231" class="hover:text-white transition-colors">(713) 385-7231</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 text-primary mr-3"></i>
+                            <a href="mailto:lohaco@outlook.com"
+                                class="break-all hover:text-white transition-colors">lohaco@outlook.com</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 text-primary mr-3"></i>
+                            <span>Houston, TX</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div
+            class="w-full h-[300px] mt-12 overflow-hidden grayscale contrast-[1.2] hover:grayscale-0 transition-all duration-700 opacity-50 hover:opacity-100">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443089.050630777!2d-95.73060049448255!3d29.816049280140226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b4488d8501%3A0xca0d02def365053b!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1715456381294!5m2!1sen!2sus"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="Loha Construction LLC Service Area"></iframe>
+        </div>
+        <div class="bg-zinc-950 py-8">
+            <div
+                class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-500">
+                <p>&copy; 2024 Loha Construction LLC. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
+    <script>
+        // Form Logic
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnSpinner = document.getElementById('btn-spinner');
+        const sendAnotherBtn = document.getElementById('send-another-btn');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Loading State
+            submitBtn.disabled = true;
+            btnText.classList.add('hidden');
+            btnSpinner.classList.remove('hidden');
+
+            setTimeout(() => {
+                // Success State
+                form.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                submitBtn.disabled = false;
+                btnText.classList.remove('hidden');
+                btnSpinner.classList.add('hidden');
+            }, 1500);
+        });
+
+        sendAnotherBtn.addEventListener('click', () => {
+            form.reset();
+            successMessage.classList.add('hidden');
+            form.classList.remove('hidden');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,20 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loha Construction LLC | Houston, TX</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#a81c1c', // Deep Red from logo
-                        secondary: '#d4af37', // Gold from logo
+                        primary: '#a81c1c',
+                        secondary: '#d4af37',
                         dark: '#121212',
                         accent: '#800000'
                     },
@@ -26,18 +28,430 @@
             }
         }
     </script>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0"
-  }
-}
-</script>
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(-25%) translateX(-50%);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+
+            50% {
+                transform: translateY(0) translateX(-50%);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+    </style>
 </head>
+
 <body class="bg-zinc-50 text-zinc-900 overflow-x-hidden">
-    <div id="root"></div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 group">
+                <div class="flex flex-col">
+                    <span id="nav-logo-text"
+                        class="text-2xl font-bold tracking-tighter transition-colors text-white">LOHA</span>
+                    <span id="nav-logo-sub"
+                        class="text-[10px] tracking-[0.2em] font-bold transition-colors text-zinc-200">CONSTRUCTION
+                        LLC</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex space-x-7 items-center">
+                <a href="index.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">Home</a>
+                <a href="about-us.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">About</a>
+
+                <div class="relative group" id="services-dropdown-container">
+                    <button id="services-btn"
+                        class="nav-link flex items-center font-semibold hover:text-primary transition-colors focus:outline-none text-white">
+                        Services
+                        <i class="fas fa-chevron-down ml-1.5 text-[10px] transition-transform duration-200"></i>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div
+                        class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl py-3 border border-zinc-100 transition-all duration-200 transform opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto">
+                        <a href="services/kitchen-remodeling.html"
+                            class="block px-6 py-2.5 text-sm font-semibold hover:bg-zinc-50 hover:text-primary transition-colors text-zinc-700">Kitchen
+                            Remodeling</a>
+                        <a href="services/bathroom-remodeling.html"
+                            class="block px-6 py-2.5 text-sm font-semibold hover:bg-zinc-50 hover:text-primary transition-colors text-zinc-700">Bathroom
+                            Remodeling</a>
+                    </div>
+                </div>
+
+                <a href="project-gallery.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">Projects</a>
+                <a href="testimonials.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">Testimonials</a>
+                <a href="faq.html"
+                    class="nav-link font-semibold hover:text-primary transition-colors text-white">FAQ</a>
+                <a href="contact-us.html"
+                    class="bg-primary hover:bg-accent text-white px-6 py-2.5 rounded-full font-bold transition-all transform hover:scale-105 shadow-md">Get
+                    a Quote</a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl p-2 focus:outline-none text-white">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="lg:hidden bg-white overflow-hidden transition-all duration-300 ease-in-out border-b border-zinc-100 max-h-0 opacity-0">
+            <div class="container mx-auto px-6 py-6 flex flex-col space-y-4">
+                <a href="index.html" class="font-bold text-xl text-zinc-800">Home</a>
+                <a href="about-us.html" class="font-bold text-xl text-zinc-800">About</a>
+                <div class="flex flex-col space-y-3">
+                    <span class="text-zinc-400 text-xs font-bold uppercase tracking-widest px-1">Services</span>
+                    <a href="services/kitchen-remodeling.html"
+                        class="font-bold pl-4 text-lg border-l-2 text-zinc-800 border-transparent">Kitchen
+                        Remodeling</a>
+                    <a href="services/bathroom-remodeling.html"
+                        class="font-bold pl-4 text-lg border-l-2 text-zinc-800 border-transparent">Bathroom
+                        Remodeling</a>
+                </div>
+                <a href="project-gallery.html" class="font-bold text-xl text-zinc-800">Projects</a>
+                <a href="testimonials.html" class="font-bold text-xl text-zinc-800">Testimonials</a>
+                <a href="faq.html" class="font-bold text-xl text-zinc-800">FAQ</a>
+                <a href="contact-us.html"
+                    class="bg-primary text-white p-4 text-center rounded-xl font-bold text-lg shadow-lg active:scale-95 transition-transform">Get
+                    a Quote</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Overlay for transparent header readability before scroll -->
+    <div id="header-overlay"
+        class="fixed top-0 left-0 w-full h-32 bg-gradient-to-b from-black/60 to-transparent z-[45] pointer-events-none transition-opacity duration-300">
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[100dvh] flex items-center justify-center text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/seed/remodel/1920/1080"
+                class="w-full h-full object-cover filter brightness-[0.4]" alt="Houston Remodeling" />
+        </div>
+        <div class="relative z-10 text-center container mx-auto px-6 flex flex-col items-center pt-20">
+            <!-- Logo in Hero -->
+            <img src="images/LOHA NO BG.png" alt="Loha Construction LLC"
+                class="w-48 md:w-80 mb-8 animate-fade-in opacity-90 drop-shadow-2xl">
+
+            <h4 class="text-secondary font-bold tracking-[0.3em] uppercase mb-4 animate-fade-in text-sm md:text-base">
+                Excellence in
+                Craftsmanship</h4>
+            <h1 class="text-4xl md:text-7xl font-serif font-bold mb-8 leading-tight">
+                Transforming Your <br />
+                <span class="text-primary italic">Dream Home</span> Into Reality
+            </h1>
+            <p class="text-lg md:text-2xl mb-10 text-zinc-200 max-w-2xl mx-auto">
+                Houston's premier luxury remodeling experts specializing in bespoke kitchens and spa-inspired bathrooms.
+            </p>
+            <div
+                class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 w-full">
+                <a href="contact-us.html"
+                    class="bg-primary hover:bg-red-800 text-white px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-xl w-full sm:w-auto inline-block text-center">
+                    Schedule Free Estimate
+                </a>
+                <a href="project-gallery.html"
+                    class="border-2 border-white hover:bg-white hover:text-zinc-900 text-white px-10 py-4 rounded-full font-bold text-lg transition-all w-full sm:w-auto inline-block text-center">
+                    View Our Work
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
+            <i class="fas fa-chevron-down text-3xl opacity-50"></i>
+        </div>
+    </section>
+
+    <!-- Services Summary -->
+    <section class="py-12 lg:py-24 bg-zinc-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold mb-4">Our Specialty Services</h2>
+                <div class="w-24 h-1 bg-secondary mx-auto mb-6"></div>
+                <p class="text-zinc-600 max-w-xl mx-auto">From concept to completion, we deliver high-end results
+                    tailored to your lifestyle and taste.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Kitchen -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://picsum.photos/seed/kitchen1/1200/800" alt="Kitchen Remodeling"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">Kitchen Remodeling</h3>
+                        <p class="text-zinc-600 mb-6">Transform your kitchen into a culinary masterpiece with our custom
+                            design and renovation services.</p>
+                        <a href="services/kitchen-remodeling.html"
+                            class="text-primary font-bold inline-flex items-center hover:translate-x-2 transition-transform">
+                            Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Bathroom -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://picsum.photos/seed/bath1/1200/800" alt="Bathroom Remodeling"
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-3">Bathroom Remodeling</h3>
+                        <p class="text-zinc-600 mb-6">Create a spa-like retreat in your own home with our professional
+                            bathroom renovation solutions.</p>
+                        <a href="services/bathroom-remodeling.html"
+                            class="text-primary font-bold inline-flex items-center hover:translate-x-2 transition-transform">
+                            Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-12 lg:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-serif font-bold mb-6">Why Houston Homeowners <br /><span
+                            class="text-primary">Trust Loha Construction</span></h2>
+                    <p class="text-lg text-zinc-600 mb-8 leading-relaxed">
+                        With years of experience in the Houston metropolitan area, we pride ourselves on transparency,
+                        integrity, and exceptional quality. We don't just build rooms; we build lasting relationships
+                        with our clients through meticulous planning and execution.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 bg-zinc-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4 group hover:bg-primary transition-colors">
+                                <i class="fas fa-gem text-primary group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Premium Materials</h4>
+                                <p class="text-zinc-500">We source only high-quality stone, wood, and fixtures.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 bg-zinc-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4 group hover:bg-primary transition-colors">
+                                <i class="fas fa-user-shield text-primary group-hover:text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-1">Certified Experts</h4>
+                                <p class="text-zinc-500">Fully licensed and insured professionals you can trust in your
+                                    home.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://picsum.photos/seed/team/800/1000" class="rounded-2xl shadow-2xl"
+                        alt="Loha Team" />
+                    <div
+                        class="absolute -bottom-8 -left-8 bg-primary text-white p-8 rounded-xl shadow-xl hidden md:block">
+                        <p class="text-4xl font-bold mb-1">15+</p>
+                        <p class="uppercase tracking-widest text-xs font-bold opacity-80">Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Carousel (Simple Grid) -->
+    <section class="py-12 lg:py-24 bg-zinc-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h2 class="text-4xl font-serif font-bold mb-4">Our Recent Transformations</h2>
+                    <p class="text-zinc-400">Discover some of our award-winning work across Texas.</p>
+                </div>
+                <a href="project-gallery.html"
+                    class="mt-6 md:mt-0 inline-block border-b-2 border-secondary pb-1 font-bold text-secondary hover:text-white hover:border-white transition-colors">
+                    View All Projects
+                </a>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="group relative h-80 overflow-hidden rounded-xl cursor-pointer">
+                    <img src="https://picsum.photos/seed/pro1/800/600" alt="Modern Farmhouse Kitchen"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-secondary font-bold text-xs uppercase mb-1">Kitchen</span>
+                        <h4 class="text-xl font-bold">Modern Farmhouse Kitchen</h4>
+                    </div>
+                </div>
+                <div class="group relative h-80 overflow-hidden rounded-xl cursor-pointer">
+                    <img src="https://picsum.photos/seed/pro2/800/600" alt="Luxury Master Suite"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-secondary font-bold text-xs uppercase mb-1">Bathroom</span>
+                        <h4 class="text-xl font-bold">Luxury Master Suite</h4>
+                    </div>
+                </div>
+                <div class="group relative h-80 overflow-hidden rounded-xl cursor-pointer">
+                    <img src="https://picsum.photos/seed/pro3/800/600" alt="Contemporary Chef's Kitchen"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-secondary font-bold text-xs uppercase mb-1">Kitchen</span>
+                        <h4 class="text-xl font-bold">Contemporary Chef's Kitchen</h4>
+                    </div>
+                </div>
+                <div class="group relative h-80 overflow-hidden rounded-xl cursor-pointer">
+                    <img src="https://picsum.photos/seed/pro4/800/600" alt="Minimalist Bath Retreat"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-secondary font-bold text-xs uppercase mb-1">Bathroom</span>
+                        <h4 class="text-xl font-bold">Minimalist Bath Retreat</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-12 lg:py-24 bg-primary text-white text-center">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-serif font-bold mb-6">Ready to Start Your Project?</h2>
+            <p class="text-xl text-red-100 mb-10 max-w-2xl mx-auto">
+                Book your free consultation today and let's discuss how we can bring your vision to life.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="contact-us.html"
+                    class="bg-white text-primary px-10 py-4 rounded-full font-bold text-lg hover:bg-zinc-100 transition-all inline-block">
+                    Request Your Estimate
+                </a>
+                <a href="tel:(713) 385-7231"
+                    class="flex items-center justify-center border-2 border-white/50 hover:border-white px-10 py-4 rounded-full font-bold text-lg transition-all inline-block">
+                    <i class="fas fa-phone mr-2"></i> (713) 385-7231
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-zinc-900 text-zinc-300 pt-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1">
+                    <div class="mb-4">
+                        <span class="text-3xl font-bold text-white tracking-tighter">LOHA</span>
+                        <p class="text-xs text-secondary font-bold tracking-widest mt-1 uppercase">CONSTRUCTION LLC</p>
+                    </div>
+                    <p class="text-zinc-400 mb-6 italic">Building dreams, one home at a time in Houston, TX.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-zinc-800 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-colors"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-zinc-800 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-colors"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 bg-zinc-800 flex items-center justify-center rounded-full hover:bg-primary hover:text-white transition-colors"
+                            aria-label="Houzz"><i class="fab fa-houzz"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-lg uppercase tracking-wider">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="services/kitchen-remodeling.html"
+                                class="hover:text-secondary transition-colors">Kitchen Remodeling</a></li>
+                        <li><a href="services/bathroom-remodeling.html"
+                                class="hover:text-secondary transition-colors">Bathroom Remodeling</a></li>
+                        <li><a href="project-gallery.html" class="hover:text-secondary transition-colors">Project
+                                Gallery</a></li>
+                        <li><a href="contact-us.html" class="hover:text-secondary transition-colors">Custom Projects</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-lg uppercase tracking-wider">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about-us.html" class="hover:text-secondary transition-colors">About Us</a></li>
+                        <li><a href="testimonials.html" class="hover:text-secondary transition-colors">Testimonials</a>
+                        </li>
+                        <li><a href="faq.html" class="hover:text-secondary transition-colors">FAQ</a></li>
+                        <li><a href="areas-served.html" class="hover:text-secondary transition-colors">Areas Served</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 text-lg uppercase tracking-wider">Contact Info</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 text-primary mr-3"></i>
+                            <a href="tel:(713) 385-7231" class="hover:text-white transition-colors">(713) 385-7231</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 text-primary mr-3"></i>
+                            <a href="mailto:lohaco@outlook.com"
+                                class="break-all hover:text-white transition-colors">lohaco@outlook.com</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 text-primary mr-3"></i>
+                            <span>Houston, TX</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full-width Map Section in Footer -->
+        <div
+            class="w-full h-[300px] mt-12 overflow-hidden grayscale contrast-[1.2] hover:grayscale-0 transition-all duration-700 opacity-50 hover:opacity-100">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443089.050630777!2d-95.73060049448255!3d29.816049280140226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b4488d8501%3A0xca0d02def365053b!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1715456381294!5m2!1sen!2sus"
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="Loha Construction LLC Service Area"></iframe>
+        </div>
+
+        <div class="bg-zinc-950 py-8">
+            <div
+                class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-500">
+                <p>&copy; 2024 Loha Construction LLC. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script src="js/app.js"></script>
 </body>
+
 </html>
